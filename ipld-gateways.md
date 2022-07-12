@@ -19,6 +19,9 @@ Starting out, here's some of the assumptions and goals I had when going about th
 - Expose raw IPLD without UnixFS-ities
 - Clear path for integrating ADLs/Schemas/etc
 - Read + write capabilities
+- Find folks that would use this
+- Use case: Light clients (Browsers/ETC)
+- use case: Languages/Environments with little IPLD library support
 
 ## Basic
 
@@ -90,8 +93,10 @@ With that in mind, I wanted to apply some of the learnings from writable gateway
 Uploading IPLD data could be similar to IPFS.
 We can POST data encoded in whatever format we're used to to `/ipld/` and get back the CID for it.
 Or we can PUT some data over top of an existing CID with some data and get back an updated root.
+We'll also need to figure out how long data would be persisted and how this could interact with pinning services.
 As well, similar to being able to read data in different formats, we can hint to the gateway which encoding we're using for IPLD.
 One thing that remains is to figure out how we could POST data in one encoding, but have the gateway save it in another one.
+This could be useul for cases where JSON is easier for your application to work with, but you want to store the data in a more efficient format like dag-cbor.
 -->
 
 - `POST /ipld/ {somedata} => ipld://newcid`
@@ -131,14 +136,9 @@ ipld.put(url, Node) => url
 ipld.patch(url, patchset) => url
 ```
 
-## Use cases
-
-- Light clients (Browsers/ETC)
-- Languages/Environments with little IPLD library support
-- What other use cases can you think of?
-
 ## Next Steps
 
+- What other use cases can you think of?
 - Anything we should watch out for / is missing?
 - What are some potential applications?
 - Are there folks that would actively be interested in using these specs once we make them?

@@ -15,12 +15,13 @@ Before getting into writable gateways, lets look at what readable gateways do th
 Most of this functionality comes out of the box with Kubo based gateways in Go.
 -->
 
+- [Specs](https://github.com/ipfs/specs/tree/main/http-gateways)
 - Resolve IPFS CIDs and download files (or sub-range)
 - Resolve IPNS to use for same stuff as IPFS
 - Download DAGs as CAR files (`?format` parameter)
 - Generate directory listings
 
-## Writable go-ipfs gateway
+## Writable Kubo gateway
 
 <!--
 Similarly, the gateway that comes with Kubo also has support for opting into writing to the gateway alongside reading from it.
@@ -57,7 +58,7 @@ For the web, there's been another standard way of sending multiple files to a si
 For raw HTTP libraries, this requires encoding data in multipartm/form-data encodings.
 More practically within browser clients this can be done via built in APIs like `FormData` and `fetch()`.
 Unlike CAR files which require more code for properly building up data, you can make use of existing browser primitives without extra dependencies to upload data.
-One downside is that the formdata spec doesn't allow for specifying subfolders within file names being uploaded, so you cannot 
+One downside is that the formdata spec doesn't allow for specifying subfolders within file names being uploaded, so you're stuck with just adding files at the top level.
 -->
 
 - mim-type: `multipart/form-data`
@@ -80,7 +81,7 @@ Another place where writability could be useful, is when we think about mutabili
 A lot of applications rely on updating data over time and at the moment sending that updated CID often gets done out of bands via centralized side channels or protocols on top of libp2p.
 In Agregore, we support this via similar APIs to IPFS.
 In the same way that you can write new data over an IPFS CID path, you can write data over an IPNS key if the gateway has access to write over it.
-This means that clients using this sort of gateway don't need to add anything special in order to 
+This means that clients using this sort of gateway don't need any extra libraries in order to create and publish IPFS datasets that change over time.
 -->
 
 - Mutability to datasets
