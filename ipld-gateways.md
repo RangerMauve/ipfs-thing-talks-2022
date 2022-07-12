@@ -25,7 +25,7 @@ Starting out, here's some of the assumptions and goals I had when going about th
 <!--
 With that in mind, let's talk about some basic APIs we could expose on the gateway for loading IPLD content.
 Obviously, getting a CID can be useful, and we could extend it with the standard `Accept` header from browsers to get data out in different formats.
-Similarly the gateway will informus what the encoding is for the data we asked for.
+Similarly the gateway will inform us what the encoding is for the data we asked for.
 -->
 
 - `GET /ipld/cid/supath`
